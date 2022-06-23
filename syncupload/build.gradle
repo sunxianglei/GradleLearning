@@ -1,0 +1,9 @@
+plugins {
+    id 'groovy'
+}
+apply from: './upload.gradle'
+
+dependencies {
+    implementation gradleApi()
+    implementation localGroovy()
+}

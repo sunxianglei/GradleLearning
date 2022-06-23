@@ -1,0 +1,28 @@
+apply plugin: 'maven'
+
+def POM_VERSION = '1.0.5-SNAPSHOT'
+def POM_GROUP_ID = 'com.sun.plugin'
+def POM_ARTIFACT_ID = 'syncupload'
+def USERNAME = 'admin'
+def PASSWORD = 'admin123'
+def REPOSITORY_URL = 'http://localhost:8081/repository/sun/'
+def REPOSITORY_URL_SNAPSHOT = 'http://localhost:8081/repository/sun-snapshot/'
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            snapshotRepository(url: REPOSITORY_URL_SNAPSHOT) {
+                authentication(userName: USERNAME, password: PASSWORD)
+            }
+            repository(url: REPOSITORY_URL) {
+                authentication(userName: USERNAME, password: PASSWORD)
+            }
+            pom.project {
+                pom.groupId = POM_GROUP_ID
+                pom.artifactId = POM_ARTIFACT_ID
+                pom.version = POM_VERSION
+                pom.name = POM_ARTIFACT_ID
+            }
+        }
+    }
+}

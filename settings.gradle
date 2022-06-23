@@ -1,0 +1,5 @@
+include ':testUpload2'
+include ':testUpload1'
+include ':syncupload'
+include ':app'
+rootProject.name = "GradleLearning"
